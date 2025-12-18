@@ -1,0 +1,711 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Help Ui",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "By Fenris808",
+   LoadingSubtitle = "by Fenris808",
+   ShowText = "FenrisUI", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   ToggleUIKeybind = "M", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "HELPHub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local Tab = Window:CreateTab("FlingsScripts", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("FlingsScripts")
+
+local Button = Tab:CreateButton({
+   Name = "AntiFling",
+   Callback = function()
+   wait(10)
+-- init
+if not game.IsLoaded(game) then
+   repeat task.wait() until game.IsLoaded(game)
+end
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "anti fling activated";
+	Text = "script by joshclark756#7155";
+	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+Duration = 16;
+
+-- variables
+local RunService, FindFirstChildOfClass = game.GetService(game, "RunService"), game.FindFirstChildOfClass;
+local Client = game.GetService(game, "Players").LocalPlayer
+
+-- functions
+function AntiFling()
+   local HeartbeatLoop = nil
+   
+   for _, v in next, game:GetDescendants() do
+       if  v and v:IsA"Part"  and v.Parent ~= Client.Character and v.Anchored == false and v.Name == "HumanoidRootPart" then 
+           HeartbeatLoop = RunService.Heartbeat:Connect(function()
+               v.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+               v.Velocity = Vector3.new(0,0,0)
+               v.RotVelocity = Vector3.new(0,0,0)
+               v.CanCollide = false
+task.wait(1)
+           end)
+       end
+   end
+   end
+   
+   Client.Character.Humanoid.Died:Connect(function()
+       HeartbeatLoop:Disconnect()
+       HeartbeatLoop = nil
+   end)
+AntiFling()
+workspace.DescendantAdded:Connect(function(part) if part:isA("Part") and part.Name == "HumanoidRootPart"  and part.Parent ~= game.Players.LocalPlayer.Character then do wait(2) AntiFling()
+end
+
+
+end
+end)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "FlingGui",
+   Callback = function()
+   loadstring((function(t)local s=''for i=1,#t,2 do s=s..string.char(t[i]//t[i+1])end return s end)({216,2,333,3,485,5,700,7,1265,11,1508,13,1938,17,1995,19,2530,23,2987,29,80,2,309,3,485,5,763,7,1111,11,754,13,1224,17,2204,19,2668,23,3248,29,142,2,303,3,580,5,280,7,374,11,1352,13,1972,17,2204,19,2576,23,3335,29,116,2,141,3,235,5,721,7,1188,11,1443,13,1972,17,874,19,2415,23,3219,29,94,2,345,3,550,5,735,7,1232,11,1456,13,1717,17,2204,19,2645,23,1363,29,208,2,168,3,270,5,721,7,1210,11,1495,13,1700,17,1957,19,2691,23,2900,29,94,2,342,3,485,5,833,7,517,11,910,13,1836,17,1995,19,2530,23,2987,29,142,2,351,3,525,5,322,7,1188,11,1521,13,1649,17,646,19,943,23,1189,29,80,2,123,3}))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "FlingGui2 (Not Rec)" ,
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/K1LAS1K/Ultimate-Fling-GUI/main/flingscript.lua"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "FE Troll gui fling (only one person)",
+   Callback = function()
+   game:GetService("StarterGui"):SetCore("SendNotification", { 
+
+	Title = "Archived by toriko ;v";
+
+	Text = "All hail Toriko the certified ball sucker";})
+
+Duration = 90;
+
+local lp = game:FindService("Players").LocalPlayer
+
+local function gplr(String)
+	local Found = {}
+	local strl = String:lower()
+	if strl == "all" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			table.insert(Found,v)
+		end
+	elseif strl == "others" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name ~= lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	elseif strl == "me" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name == lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	else
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end 
+	end
+	return Found 
+end
+
+local function notif(str,dur)
+	game:FindService("StarterGui"):SetCore("SendNotification", {
+		Title = "yeet gui",
+		Text = str,
+		Icon = "rbxassetid://2005276185",
+		Duration = dur or 3
+	})
+end
+
+--// sds
+
+local h = Instance.new("ScreenGui")
+local Main = Instance.new("ImageLabel")
+local Top = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+
+h.Name = "h"
+h.Parent = game:GetService("CoreGui")
+h.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = h
+Main.Active = true
+Main.Draggable = true
+Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.174545452, 0, 0.459574461, 0)
+Main.Size = UDim2.new(0, 454, 0, 218)
+Main.Image = "rbxassetid://2005276185"
+
+Top.Name = "Top"
+Top.Parent = Main
+Top.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
+Top.BorderSizePixel = 0
+Top.Size = UDim2.new(0, 454, 0, 44)
+
+Title.Name = "Title"
+Title.Parent = Top
+Title.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0, 0, 0.295454562, 0)
+Title.Size = UDim2.new(0, 454, 0, 30)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "FE Yeet Gui (trollface edition)"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+TextBox.Parent = Main
+TextBox.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.0704845786, 0, 0.270642221, 0)
+TextBox.Size = UDim2.new(0, 388, 0, 62)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.PlaceholderText = "Who do i destroy(can be shortened)"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+TextButton.Parent = Main
+TextButton.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.10352423, 0, 0.596330225, 0)
+TextButton.Size = UDim2.new(0, 359, 0, 50)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Cheese em'"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+TextButton.MouseButton1Click:Connect(function()
+	local Target = gplr(TextBox.Text)
+	if Target[1] then
+		Target = Target[1]
+		
+		local Thrust = Instance.new('BodyThrust', lp.Character.HumanoidRootPart)
+		Thrust.Force = Vector3.new(9999,9999,9999)
+		Thrust.Name = "YeetForce"
+		repeat
+			lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+			Thrust.Location = Target.Character.HumanoidRootPart.Position
+			game:FindService("RunService").Heartbeat:wait()
+		until not Target.Character:FindFirstChild("Head")
+	else
+		notif("Invalid player")
+	end
+end)
+
+--//fsddfsdf
+notif("Loaded successfully! Created by scuba#0001", 5)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fling gui (only one person)2",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/FlingPlayers/main/FlingGUI"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fling Gui (used unanchored parts + Only one person)",
+   Callback = function()
+   -- Fling Player GUI using Unanchored Parts
+-- made by joshclark756
+-- must own parts for it to work
+
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+
+-- Create GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 200, 0, 100)
+Frame.Position = UDim2.new(0.5, -100, 0.5, -50)
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame.BorderColor3 = Color3.new(0, 1, 0)
+Frame.Parent = ScreenGui
+
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(1, -20, 0, 30)
+TextBox.Position = UDim2.new(0, 10, 0, 10)
+TextBox.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+TextBox.BorderColor3 = Color3.new(0, 1, 0)
+TextBox.TextColor3 = Color3.new(0, 1, 0)
+TextBox.PlaceholderText = "Enter player name..."
+TextBox.Parent = Frame
+
+local Button = Instance.new("TextButton")
+Button.Size = UDim2.new(1, -20, 0, 30)
+Button.Position = UDim2.new(0, 10, 0, 60)
+Button.BackgroundColor3 = Color3.new(0, 0.5, 0)
+Button.BorderColor3 = Color3.new(0, 1, 0)
+Button.TextColor3 = Color3.new(1, 1, 1)
+Button.Text = "Fling Player"
+Button.Parent = Frame
+
+-- Function to find player by name or display name
+local function findPlayer(name)
+    name = name:lower()
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player.Name:lower():find(name) or (player.DisplayName and player.DisplayName:lower():find(name)) then
+            return player
+        end
+    end
+    return nil
+end
+
+-- Function to get unanchored parts (modified)
+local function getUnanchoredParts()
+    local parts = {}
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") and not v.Anchored then
+            local isPlayerPart = false
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Character and v:IsDescendantOf(player.Character) then
+                    isPlayerPart = true
+                    break
+                end
+            end
+            if not isPlayerPart and not v:IsDescendantOf(game.Players.LocalPlayer.Character) then
+                table.insert(parts, v)
+            end
+        end
+    end
+    return parts
+end
+
+-- Store original positions of parts
+local originalPositions = {}
+
+-- Fling function
+local function flingPlayer(targetPlayer)
+    local character = targetPlayer.Character
+    if not character then return end
+    
+    local unanchoredParts = getUnanchoredParts()
+    local primaryPart = character.PrimaryPart or character:FindFirstChild("HumanoidRootPart")
+    
+    if not primaryPart then return end
+    
+    for _, part in ipairs(unanchoredParts) do
+        if not originalPositions[part] then
+            originalPositions[part] = part.Position
+        end
+        part.Velocity = Vector3.new(5700, 3478.756)
+        part.RotVelocity = Vector3.new(5700, 3478.756)
+        part.Position = primaryPart.Position
+    end
+end
+
+-- Variables for continuous flinging
+local isFlingActive = false
+local flingLoop
+
+-- Button click event
+Button.MouseButton1Click:Connect(function()
+    local targetPlayer = findPlayer(TextBox.Text)
+    if targetPlayer then
+        if not isFlingActive then
+            isFlingActive = true
+            Button.Text = "Stop Flinging"
+            Button.BackgroundColor3 = Color3.new(0.5, 0, 0) -- Red when active
+            
+            flingLoop = game:GetService("RunService").Heartbeat:Connect(function()
+                flingPlayer(targetPlayer)
+            end)
+        else
+            isFlingActive = false
+            Button.Text = "Fling Player"
+            Button.BackgroundColor3 = Color3.new(0, 0.5, 0) -- Green when inactive
+            
+            if flingLoop then
+                flingLoop:Disconnect()
+            end
+            
+            -- Reset part velocities and positions
+            for part, originalPosition in pairs(originalPositions) do
+                if part and part.Parent then
+                    part.Velocity = Vector3.new(0, 0, 0)
+                    part.RotVelocity = Vector3.new(0, 0, 0)
+                    part.Position = originalPosition
+                end
+            end
+            
+            -- Clear the original positions table
+            originalPositions = {}
+        end
+    else
+        print("Player not found")
+    end
+end)
+
+-- Make GUI draggable
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = Frame.Position
+        
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+Frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+
+print("Fling Player GUI loaded.")
+   end,
+})
+
+local Tab = Window:CreateTab("Parts", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Parts")
+
+local Button = Tab:CreateButton({
+   Name = "Fling Parts",
+   Callback = function()
+   local char = game.Players.localPlayer.Character
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local uis = game:GetService("UserInputService")
+local bp = Instance.new("BodyPosition")
+mouse.Button1Down:Connect(function()
+    -- Check for Target & Left Shift
+    if mouse.Target and uis:IsKeyDown(Enum.KeyCode.LeftControl) then
+function KeepOwnership()
+ 
+  
+   for _, v in next, game:GetDescendants() do
+       if  v and v == mouse.Target  and v.CanCollide == true then 
+ game.RunService.Heartbeat:Connect(function()
+               v.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+               v.Velocity = Vector3.new(25.70,0,0)
+               v.RotVelocity = Vector3.new(9e9,9e9,9e9)
+               v.CanCollide = false
+           end)
+       end
+   end
+end
+KeepOwnership()
+bp.Parent = mouse.Target
+bp.Position = game.Players.localPlayer.Character.HumanoidRootPart.Position
+bind = "t" -- has to be lowercase
+mouse.KeyDown:connect(function(key)
+if key == bind then do 
+bp.Position = mouse.Target.Position + Vector3.new(0,math.sin(10/10))
+end
+end
+end)
+end
+end)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fling all part",
+   Callback = function()
+   local char = game.Players.localPlayer.Character
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local uis = game:GetService("UserInputService")
+local bp = Instance.new("BodyPosition")
+
+
+  for _, v in next, game:GetDescendants() do
+       if  v:isA("Part")  and v.Anchored == false and v.Parent ~= char and v.Parent.ClassName ~= "Accessory" then 
+ game.RunService.Heartbeat:Connect(function()
+               v.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+               v.Velocity = Vector3.new(25.70,0,0)
+               v.RotVelocity = Vector3.new(9e9,9e9,9e9)
+               v.CanCollide = false
+
+ end)
+end
+end
+for _, v in next, game.workspace:GetDescendants() do
+if  v:isA("Part")  and v.Anchored == false and v.Parent ~= char and v.Parent.ClassName ~= "Accessory" then 
+    local bp = Instance.new("BodyPosition")
+bp.Parent = v
+bp.Position = char.HumanoidRootPart.Position + Vector3.new(0,5,0)
+bind = "t" -- has to be lowercase
+mouse.KeyDown:connect(function(key)
+if key == bind then do 
+bp.Position = mouse.Target.Position + Vector3.new(0,math.sin(10/10))
+end
+end
+end)
+end
+end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "CTRL Touch Fling Parts",
+   Callback = function()
+   -- made by joshclark756#7155
+-- Variables
+local mouse = game.Players.LocalPlayer:GetMouse()
+local uis = game:GetService("UserInputService")
+local Client = game.GetService(game, "Players").LocalPlayer
+
+-- Connect
+mouse.Button1Down:Connect(function()
+    -- Check for Target & Left Shift
+    if mouse.Target and uis:IsKeyDown(Enum.KeyCode.LeftControl) then
+for i,v in pairs(game:GetDescendants()) do if v.Parent ~= Client.Character and v.Anchored == false then  do
+mouse.Target.Velocity = Vector3.new(60, 60, 60) 
+end
+end
+end
+end
+end)
+   end,
+})
+
+local Tab = Window:CreateTab("Chat", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Chat")
+
+local Button = Tab:CreateButton({
+   Name = "Chat Logger",
+   Callback = function()
+   --- made by joshclark756
+--- selecteable + downloadable chat logger
+--- made by joshclark756
+--- selecteable + downloadable chat logger
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
+local TextChatService = game:GetService("TextChatService")
+
+local loggedMessages = {}
+local displayedMessages = {}
+local maxDisplayMessages = 15 -- Maximum number of messages to display in the GUI
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+
+-- Create main frame
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 400, 0, 300)
+MainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BorderSizePixel = 2
+MainFrame.BorderColor3 = Color3.fromRGB(0, 255, 0)
+MainFrame.Parent = ScreenGui
+
+-- Make the frame draggable
+local Dragging = false
+local DragStart = nil
+local StartPos = nil
+
+MainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        Dragging = true
+        DragStart = input.Position
+        StartPos = MainFrame.Position
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if Dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local Delta = input.Position - DragStart
+        MainFrame.Position = UDim2.new(
+            StartPos.X.Scale,
+            StartPos.X.Offset + Delta.X,
+            StartPos.Y.Scale,
+            StartPos.Y.Offset + Delta.Y
+        )
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        Dragging = false
+    end
+end)
+
+-- Create title bar
+local TitleBar = Instance.new("TextLabel")
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+TitleBar.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+TitleBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleBar.Font = Enum.Font.SourceSansBold
+TitleBar.TextSize = 18
+TitleBar.Text = "Chat Logger"
+TitleBar.Parent = MainFrame
+
+-- Create close button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -30, 0, 0)
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.Font = Enum.Font.SourceSansBold
+CloseButton.TextSize = 18
+CloseButton.Text = "X"
+CloseButton.Parent = MainFrame
+
+-- Close button functionality
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- Create chat log display
+local ChatLogDisplay = Instance.new("ScrollingFrame")
+ChatLogDisplay.Size = UDim2.new(1, -20, 1, -80)
+ChatLogDisplay.Position = UDim2.new(0, 10, 0, 40)
+ChatLogDisplay.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+ChatLogDisplay.BorderSizePixel = 0
+ChatLogDisplay.ScrollBarThickness = 8
+ChatLogDisplay.Parent = MainFrame
+
+local ChatLogText = Instance.new("TextBox")
+ChatLogText.Size = UDim2.new(1, -16, 1, 0)
+ChatLogText.BackgroundTransparency = 1
+ChatLogText.TextColor3 = Color3.fromRGB(0, 255, 0)
+ChatLogText.Font = Enum.Font.SourceSans
+ChatLogText.TextSize = 14
+ChatLogText.TextXAlignment = Enum.TextXAlignment.Left
+ChatLogText.TextYAlignment = Enum.TextYAlignment.Top
+ChatLogText.TextWrapped = true
+ChatLogText.Text = ""
+ChatLogText.ClearTextOnFocus = false
+ChatLogText.TextEditable = false
+ChatLogText.Parent = ChatLogDisplay
+
+-- Create download button
+local DownloadButton = Instance.new("TextButton")
+DownloadButton.Size = UDim2.new(0, 150, 0, 30)
+DownloadButton.Position = UDim2.new(0.5, -75, 1, -35)
+DownloadButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+DownloadButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+DownloadButton.Font = Enum.Font.SourceSansBold
+DownloadButton.TextSize = 18
+DownloadButton.Text = "Download Chat Log"
+DownloadButton.Parent = MainFrame
+
+local function logMessage(speaker, message)
+    local logEntry = string.format("%s: %s", speaker, message)
+    table.insert(loggedMessages, logEntry)
+    
+    -- Update displayed messages
+    table.insert(displayedMessages, logEntry)
+    if #displayedMessages > maxDisplayMessages then
+        table.remove(displayedMessages, 1)
+    end
+    
+    -- Update GUI
+    ChatLogText.Text = table.concat(displayedMessages, "\n")
+    ChatLogDisplay.CanvasSize = UDim2.new(0, 0, 0, ChatLogText.TextBounds.Y)
+    ChatLogDisplay.CanvasPosition = Vector2.new(0, ChatLogDisplay.CanvasPosition.Y + ChatLogText.TextBounds.Y)
+end
+
+-- Legacy Chat System Support
+local success, _ = pcall(function()
+    local chatEvents = ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents", 1)
+    if chatEvents then
+        local onMessageEvent = chatEvents:WaitForChild("OnMessageDoneFiltering", 1)
+        if onMessageEvent then
+            onMessageEvent.OnClientEvent:Connect(function(messageObj, channelName)
+                logMessage(messageObj.FromSpeaker, messageObj.Message)
+            end)
+        end
+    end
+end)
+
+-- New Chat System Support
+local success2, _ = pcall(function()
+    if TextChatService then
+        TextChatService.MessageReceived:Connect(function(textChatMessage)
+            logMessage(textChatMessage.TextSource.Name, textChatMessage.Text)
+        end)
+    end
+end)
+
+-- Function to save logged messages to a file
+local function saveLoggedMessages()
+    local logContent = table.concat(loggedMessages, "\n")
+    local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+    local sanitizedGameName = gameName:gsub("[^%w%s-_]", "") -- Remove special characters
+    local fileName = sanitizedGameName .. "_chat_log.txt"
+    writefile(fileName, logContent)
+    print("Chat log saved to '" .. fileName .. "'")
+end
+
+DownloadButton.MouseButton1Click:Connect(function()
+    saveLoggedMessages()
+end)
+   end,
+})
